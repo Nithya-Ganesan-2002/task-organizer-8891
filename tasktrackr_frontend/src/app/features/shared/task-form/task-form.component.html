@@ -1,0 +1,17 @@
+<form class="card stack" style="padding:1rem" (ngSubmit)="submit()">
+  <div class="stack">
+    <input class="input" type="text" [(ngModel)]="title" name="title" placeholder="Task title" aria-label="Task title" required>
+    <textarea class="input" rows="3" [(ngModel)]="description" name="description" placeholder="Description (optional)"></textarea>
+    <div class="row">
+      <input class="input" type="date" [(ngModel)]="dueDate" name="dueDate" aria-label="Due date">
+      <select class="select" [(ngModel)]="priority" name="priority" aria-label="Priority">
+        <option value="low">Low priority</option>
+        <option value="medium">Medium priority</option>
+        <option value="high">High priority</option>
+      </select>
+    </div>
+    <div class="row" style="justify-content:flex-end">
+      <button type="submit" class="btn btn--accent">Add Task</button>
+    </div>
+  </div>
+</form>

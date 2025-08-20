@@ -1,0 +1,23 @@
+<div class="filters card stack" style="padding:1rem">
+  <div class="row">
+    <input class="input" type="text" [(ngModel)]="q" (ngModelChange)="apply()" placeholder="Search tasks..." aria-label="Search tasks">
+  </div>
+  <div class="row">
+    <select class="select" [(ngModel)]="status" (ngModelChange)="apply()" aria-label="Filter by status">
+      <option value="all">All</option>
+      <option value="active">Active</option>
+      <option value="completed">Completed</option>
+    </select>
+    <select class="select" [(ngModel)]="sortBy" (ngModelChange)="apply()" aria-label="Sort by">
+      <option value="createdAt">Created</option>
+      <option value="updatedAt">Updated</option>
+      <option value="title">Title</option>
+      <option value="dueDate">Due date</option>
+      <option value="priority">Priority</option>
+    </select>
+    <select class="select" [(ngModel)]="sortDir" (ngModelChange)="apply()" aria-label="Sort direction">
+      <option value="desc">Desc</option>
+      <option value="asc">Asc</option>
+    </select>
+  </div>
+</div>

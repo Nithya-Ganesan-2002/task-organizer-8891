@@ -1,0 +1,1 @@
+/* Global ambient typings for the app can be placed here. */

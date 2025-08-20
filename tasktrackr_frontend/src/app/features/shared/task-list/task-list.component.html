@@ -1,0 +1,36 @@
+<div class="list card">
+  <div class="list__body">
+    <div class="item" *ngFor="let t of tasks(); trackBy: trackById">
+      <div class="item__left">
+        <input type="checkbox" [checked]="t.completed" (change)="toggle(t)" aria-label="Toggle completed">
+      </div>
+
+      <div class="item__main" *ngIf="editingId() !== t.id; else editTpl">
+        <div class="row" style="align-items:baseline; gap:.5rem">
+          <div class="item__title" [class.completed]="t.completed">{{ t.title }}</div>
+          <small class="badge" [class.badge--high]="t.priority==='high'"
+                 [class.badge--low]="t.priority==='low'">{{ t.priority ?? 'medium' }}</small>
+          <div class="spacer"></div>
+          <small class="muted">Updated {{ t.updatedAt | date:'short' }}</small>
+        </div>
+        <div class="item__desc muted" *ngIf="t.description">{{ t.description }}</div>
+      </div>
+
+      <ng-template #editTpl>
+        <div class="stack" style="width:100%">
+          <input class="input" [ngModel]="draftTitle()" (ngModelChange)="draftTitle.set($event)" />
+          <textarea class="input" rows="2" [ngModel]="draftDesc()" (ngModelChange)="draftDesc.set($event)"></textarea>
+          <div class="row" style="justify-content:flex-end">
+            <button class="btn" (click)="cancelEdit()">Cancel</button>
+            <button class="btn btn--primary" (click)="saveEdit(t)">Save</button>
+          </div>
+        </div>
+      </ng-template>
+
+      <div class="item__actions">
+        <button class="btn btn--ghost" (click)="startEdit(t)">Edit</button>
+        <button class="btn btn--ghost" (click)="del(t)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
