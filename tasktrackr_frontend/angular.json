@@ -64,18 +64,17 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular:build:production"
+              "buildTarget": "angular:build:production",
+              "port": 3000,
+              "host": "0.0.0.0"
             },
             "development": {
-              "buildTarget": "angular:build:development"
+              "buildTarget": "angular:build:development",
+              "port": 3000,
+              "host": "0.0.0.0"
             }
           },
-          "defaultConfiguration": "development",
-          "options": {
-            "port": 3000,
-            "host": "0.0.0.0",
-            "disableHostCheck": true
-          }
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
